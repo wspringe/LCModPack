@@ -31,7 +31,7 @@ popd
 
 if exist !LethalCompanyInstallPath! (
     @echo yep
-    xcopy /s %cd%\*.txt !LethalCompanyInstallPath!\BepInEx\plugins\ /Y
+    xcopy /s %cd%\*.dll !LethalCompanyInstallPath!\BepInEx\plugins\ /Y
     PAUSE
 ) else (
     @echo Did not find an install path for Lethal Company

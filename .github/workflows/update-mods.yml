@@ -1,0 +1,46 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  push:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  workflow_dispatch:
+
+jobs:
+  build:
+    if: contains(github.event.head_commit.message, 'publish:') || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get commit
+        uses: actions/checkout@v4
+      - name: Build and pack mods
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20.x"
+      - run: npm ci
+      - run: npm run retrieve
+      - run: npm pack
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: modpack
+          path: lcmodpack-1.0.0.tgz
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get mod pack
+        uses: actions/download-artifact@v3
+        with:
+          name: modpack
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: false
+          title: "Newest Lethal Company Mods"
+          files: |
+            *.tgz

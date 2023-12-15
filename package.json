@@ -1,0 +1,22 @@
+{
+  "name": "lcmodpack",
+  "version": "1.0.0",
+  "description": "Creates a modpack with a batch script to install lethal company mods.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "retrieve": "npx tsc && node dist/src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^3.3.2",
+    "typescript": "^5.3.3",
+    "unzip-stream": "^0.3.1"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/unzip-stream": "^0.3.4"
+  }
+}
