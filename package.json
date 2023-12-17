@@ -8,7 +8,7 @@
     "retrieve": "npx tsc && node dist/src/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Wesley Springer",
   "license": "ISC",
   "dependencies": {
     "node-fetch": "^3.3.2",
