@@ -24,7 +24,6 @@ export class ThunderStoreApi implements ModStoreApi {
   }
 
   async downloadMod(downloadUrl: string, storeLocation: string) {
-    console.log("Downloading from " + downloadUrl);
     const response = await fetch(downloadUrl);
 
     let fileStream = fs.createWriteStream(storeLocation);
