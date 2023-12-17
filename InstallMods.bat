@@ -28,8 +28,7 @@ FOR /F "usebackq tokens=1* delims=		" %%a IN ("libraryfolders.vdf") DO (
 popd
 
 if exist !LethalCompanyInstallPath! (
-    @echo yep
-    xcopy /s "%cd%\plugins\*.dll" !LethalCompanyInstallPath!\BepInEx\plugins\ /Y
+    xcopy "%cd%\plugins\" !LethalCompanyInstallPath!\BepInEx\plugins\ /E /C /I /Y
     PAUSE
 ) else (
     @echo Did not find an install path for Lethal Company

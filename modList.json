@@ -1,5 +1,9 @@
 [
   {
+    "name": "LC_API",
+    "author": "2018"
+  },
+  {
     "name": "MoreCompany",
     "author": "notnotnotswipez"
   },
@@ -26,5 +30,13 @@
   {
     "name": "PersistentPurchases",
     "author": "TheBeeTeam"
+  },
+  {
+    "name": "FlashlightToggle",
+    "author": "Renegades"
+  },
+  {
+    "name": "AlwaysHearActiveWalkies",
+    "author": "Suskitech"
   }
 ]

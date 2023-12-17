@@ -1,7 +1,7 @@
 import getModList from "./modules/modList.js";
 import { ThunderStoreApi } from "./modules/api.js";
 import { unzipAndStoreFile } from "./modules/unzip.js";
-import { existsSync, mkdirSync } from "node:fs";
+import { makeDirectoryIfDoesNotExist } from "./modules/fileservice.js";
 
 interface Version {
   download_url: string;
@@ -20,14 +20,8 @@ const getLatestMods = async () => {
   const manifestJson = await thunderstoreApi.getPackageManifest();
   const packageManifest: Package[] = JSON.parse(JSON.stringify(manifestJson));
   let promises: any[] = [];
-
-  if (!existsSync("./downloads/")) {
-    mkdirSync("./downloads/");
-  }
-
-  if (!existsSync("./plugins/")) {
-    mkdirSync("./plugins/");
-  }
+  makeDirectoryIfDoesNotExist("./downloads/");
+  makeDirectoryIfDoesNotExist("./plugins/");
 
   packageManifest.forEach((pkg) => {
     let downloadUrl: string;
@@ -46,7 +40,15 @@ const getLatestMods = async () => {
   });
 
   Promise.all(promises).then(() => {
-    unzipAndStoreFile("downloads/", ".dll", "./plugins/");
+    try {
+      unzipAndStoreFile("downloads/", ".dll", "./plugins/");
+    } catch (e) {
+      if (typeof e === "string") {
+        console.log("An error has occurred unzipping: " + e);
+      } else if (e instanceof Error) {
+        console.log("An error has occurred unzipping: " + e.message);
+      }
+    }
   });
 };
 
