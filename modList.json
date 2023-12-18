@@ -38,5 +38,17 @@
   {
     "name": "AlwaysHearActiveWalkies",
     "author": "Suskitech"
+  },
+  {
+    "name": "SpectateEnemies",
+    "author": "AllToasters"
+  },
+  {
+    "name": "MaskedEnemyOverhaul",
+    "author": "HomelessGinger"
+  },
+  {
+    "name": "WeatherMultipliers",
+    "author": "Blorb"
   }
 ]
