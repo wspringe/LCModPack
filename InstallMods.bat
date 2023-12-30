@@ -11,8 +11,20 @@ FOR /F "tokens=2* skip=2" %%a in ('reg query "%KEY_NAME%" /v "%VALUE_NAME%"') do
    @echo Steam installation path: !InstallPath!
 )
 
+if not exist !InstallPath! (
+    @echo Could not find the steam install path
+    PAUSE
+    EXIT
+)
+
 set LibraryFilePath="!InstallPath!\steamapps\"
 pushd !LibraryFilePath!
+
+if not exist libraryfolders.vdf (
+    @echo Could not find the libraryfolders.vdf file
+    PAUSE
+    EXIT
+)
 
 @echo Checking the libraryfolders.vdf file for your steam game install path(s)...
 FOR /F "usebackq tokens=1* delims=		" %%a IN ("libraryfolders.vdf") DO (
@@ -27,6 +39,13 @@ FOR /F "usebackq tokens=1* delims=		" %%a IN ("libraryfolders.vdf") DO (
        )
     )
 )
+
+if not exist !LethalCompanyInstallPath! (
+    @echo Could not find the lethal company install path
+    PAUSE
+    EXIT
+)
+
 popd
 
 if exist !LethalCompanyInstallPath! (
