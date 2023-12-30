@@ -26,7 +26,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: modpack
-          path: lcmodpack-1.0.0.tgz
+          path: lcmodpack-1.1.0.tgz
 
   publish:
     needs: build
