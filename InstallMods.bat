@@ -17,7 +17,7 @@ if not exist !InstallPath! (
     EXIT
 )
 
-set LibraryFilePath="!InstallPath!\steamapps\"
+set LibraryFilePath=!InstallPath!\steamapps\
 pushd !LibraryFilePath!
 
 if not exist libraryfolders.vdf (
@@ -35,7 +35,7 @@ FOR /F "usebackq tokens=1* delims=		" %%a IN ("libraryfolders.vdf") DO (
 
        if exist "!SteamGamesPath!\steamapps\common\Lethal Company\" (
         @echo Found the lethal company install path: !SteamGamesPAth!\steamapps\common\Lethal Company\
-         set LethalCompanyInstallPath="!SteamGamesPath!\steamapps\common\Lethal Company\"
+         set LethalCompanyInstallPath=!SteamGamesPath!\steamapps\common\Lethal Company\
        )
     )
 )
@@ -50,9 +50,11 @@ popd
 
 if exist !LethalCompanyInstallPath! (
     @echo Copying the plugins and config folders
-    if exist "%cd%\plugins" xcopy "%cd%\plugins\" !LethalCompanyInstallPath!\BepInEx\plugins\ /E /C /I /Y
-    if exist "%cd%\cats" xcopy "%cd%\cats\" !LethalCompanyInstallPath!\BepInEx\plugins\ /E /C /I /Y
-    if exist "%cd%\configs\" xcopy "%cd%\configs\" !LethalCompanyInstallPath!\BepInEx\config\ /E /C /I /Y
+    set PluginsPath="!LethalCompanyInstallPath!\BepInEx\plugins\"
+    set ConfigsPath="!LethalCompanyInstallPath!\BepInEx\config\"
+    if exist "%cd%\plugins" xcopy /E /C /I /Y "%cd%\plugins\" !PluginsPath!
+    if exist "%cd%\cats" xcopy /E /C /I /Y "%cd%\cats\" !PluginsPath!
+    if exist "%cd%\configs" xcopy  /E /C /I /Y "%cd%\configs\" !ConfigsPath!
 ) else (
     @echo Did not find an install path for Lethal Company
     PAUSE
