@@ -51,6 +51,7 @@ popd
 if exist !LethalCompanyInstallPath! (
     @echo Copying the plugins and config folders
     if exist "%cd%\plugins" xcopy "%cd%\plugins\" !LethalCompanyInstallPath!\BepInEx\plugins\ /E /C /I /Y
+    if exist "%cd%\cats" xcopy "%cd%\cats\" !LethalCompanyInstallPath!\BepInEx\plugins\ /E /C /I /Y
     if exist "%cd%\config\" xcopy "%cd%\config\" !LethalCompanyInstallPath!\BepInEx\config\ /E /C /I /Y
 ) else (
     @echo Did not find an install path for Lethal Company
