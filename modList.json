@@ -28,6 +28,10 @@
     "author": "TheBeeTeam"
   },
   {
+    "name": "LethalCompany_InputUtils",
+    "author": "Rune580"
+  },
+  {
     "name": "FlashlightToggle",
     "author": "Renegades"
   },
@@ -48,40 +52,12 @@
     "author": "Blorb"
   },
   {
-    "name": "ReservedItemSlotCore",
-    "author": "FlipMods"
-  },
-  {
-    "name": "ReservedFlashlightSlot",
-    "author": "FlipMods"
-  },
-  {
-    "name": "ShipClock",
-    "author": "ATK"
-  },
-  {
-    "name": "VoiceHUD",
-    "author": "5Bit"
-  },
-  {
     "name": "MolesterLootBug",
     "author": "Caseuhdeeyuh"
   },
   {
-    "name": "TermSpeak",
-    "author": "KodiCraft"
-  },
-  {
     "name": "NeedyCats",
     "author": "Jordo"
-  },
-  {
-    "name": "GetLootForKills",
-    "author": "TheFluff"
-  },
-  {
-    "name": "DisableIntroSpeaker",
-    "author": "FlawTECH"
   },
   {
     "name": "QuickRestart",
